@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>J13String2.html</title>
+</head>
+<body>
+  <h2>JS 의 Core 객체</h2>
+  <script>
+    console.error("split() 함수");
+    console.warn("구분자가 있는 경우");
+    var tel = "010-1234-5678";
+    var telArr = tel.split("-");
+    for(var i=0 ; i<telArr,length ; i++){
+      console.log("telArr["+ i +"]= "+ telArr[i] +"<br>");
+    }
+
+    console.warn("구분자가 없는경우");
+    var telArrNo = tel.split("*");
+    for(var i=0 ; i<telArrNo.length ; i++){
+      console.log("telArrNo["+ i +"]= "+ telArrNo[i] +"<br>")
+    }
+
+    console.error("indexOf() 함수");
+    console.log(str2.indexOf("자바")!=-1 ? "자바 포함됨" : "자바 포함 안됨");
+    
+    console.log("lastIdexOf() 함수");
+    console.log(str1.lastIdexOf("a")!=-1 ? "a 포함됨" : "a 포함 안됨");
+    
+    console.log(str1 + "에서 a의 마지막 위치는? "+str1.lastIdexOf("a"));
+  </script>
+
+  <h2>링크걸기</h2>
+  <div id="myNaver"></div>
+  <div id="myDaum"></div>
+
+  <script>
+    // 방법1
+    let linkText = "Naver바로가기";
+    let linkHTML = linkText.link("http://www.naver.com");
+    document.getElementById("myNaver").innerHTML = linkHTML;
+    
+    // 방법2
+    const a = document.createElement("a");
+    a.href = "https://www.daum.net";
+    a.textContent = "Daum 바로가기";
+    document.getElementById("myDaum").appendChild(a);
+  </script>
+</body>
+</html>

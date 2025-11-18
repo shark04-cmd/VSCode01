@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>test.html</title>
+    
+</head>
+<body>
+<script>
+  
+  let sum = 0;
+for(var a = 1 ; a <= 10 ; a++){
+  if(a%2 != 0){
+    console.log("a = "+ a);
+    sum += a;
+  }
+}
+console.log("1 ~ 10 까지 홀수의 합 : " + sum);
+</script>
+<script>
+
+  let sum1 = 0;
+for(var a = 1 ; a <= 10 ; a++){
+  if(a%2 == 0){
+    console.log("a = "+ a);
+    sum1 += a;
+  }
+}
+console.log("1 ~ 10 까지 짝수의 합 : " + sum1);
+
+
+</script>
+
+<script>
+let sumWkr = 0;
+let sumghf = 0;
+for(var i = 1 ; i <= 10 ; i++){
+  if(i % 2 == 0){
+    console.log("i = "+ i);
+    sumWkr += i;
+  }
+  if(i % 2 != 0){
+    console.log("i = "+ i);
+    sumghf += i;
+  }
+}
+document.write("1 ~ 10 까지 짝수의 합 : " + sumWkr)
+document.write("<br> 1 ~ 10 까지 홀수의 합 : " + sumghf)
+
+
+</script>
+</body>
+</html>

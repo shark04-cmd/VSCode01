@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>J15Math1.html</title>
+</head>
+<body>
+  <script>
+    /* Math 객체 : 수학관련 함수를 제공하는 객체.
+        난수, 소수점처리, 삼각함수 등 */
+    console.error("Js 의 core 객체 - Math");
+    
+    console.log("-10 의 절대값 : "+ Math.abs(-10));
+    console.log("2 의 3 승 : "+ Math.pow);
+    console.log("3.159 의 반올림 : "+ Math.round(3.159));
+    console.log("3.159 의 올림 : "+Math.ceil(3.159));
+    console.log("3.159 의 내림 : "+Math.floor(3.159));
+    
+    // 0 ~ 1 사이의 실수를 랜덤하게 난수로 생성
+    console.log("난수발생1 : "+Math.random());
+    // 범위를 지정하여 생성할 때는 아래와 같은 수식 응용 
+    // parseInt() 정수로 변환
+    console.log("난수발생2 (1~10) : "+parseInt ((Math.random()*10)+1));
+    
+    console.log("최소값 : "+Math.min(1, 10, -100, -10, 1000, 0));
+    console.log("최대값 : "+Math.max(1, 10, -100, -10, 1000, 0));
+  </script>
+</body>
+</html>
