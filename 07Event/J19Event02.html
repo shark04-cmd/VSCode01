@@ -5,12 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>J19Event02.html</title>
   <script>
+    /* 이밴트 활용 2 : window 와 같은 객체에 이벤트핸들러를 부착한다.
+      window 객체는 JavaScript 의 최상위 객체로
+      련재 HTML 문서를 실행한 웹브라우저를 가리킨다. */
     window.onload = function(){
       alert("해당 문서의 load가 완료되었습니다.");
-
+      /* 문서의 로드가 완료된 후 해당 코드가 실행되므로
+      이 경우에는 문제없이 DOM 요소를 얻어올 수 있다. */
       var i = document.getElementById("myInput").value;
       alert("i = "+ i);
     }
+    /* JavaScript 는 인터프리터 방식(위에서 아래로 순차적으로 읽음)으로 동작하므로
+    해당 코드가 실행되는 시점에는 정의된 DOM 요소가 없으므로 에러가 발생한다. */
     // var i = document.getElementById("myInput").value;
     // alert("i = "+ i);
   </script>
