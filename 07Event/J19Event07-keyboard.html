@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<h lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>J19Event07-keyboard.html</title>
+  <script>
+    /* 키보드 이벤트
+    keydown  : 키보드를 누를때 발생하는 이벤트
+            shift 와 같은 특수키와 한글도 인식한다
+    keypress : 키보드를 눌렀다가 땔 때 발생하는 이벤트
+            keydown 과 인식하는 키가 동일하다
+    keyup    : keydown 과 같은 이벤트지만
+            shift 와 같은 특수키나 한글은 인식하지 못한다  */
+    var count = 0;
+    function fnKeyHandler(flag) {
+      // 키보드 이벤트가 발생되면 문자열을 span 태그에 삽입
+      count++;
+      var spanTag = document.getElementById("span");
+      switch(flag) {
+        case 1:
+          spanTag.innerHTML = "keydown 이벤트 발생"+ count;
+          break;
+        case 2: 
+          spanTag.innerHTML = "keypress 이벤트 발생"+ count;
+          break;
+        case 3: 
+          spanTag.innerHTML = "keyup 이벤트 발생"+ count;
+          break;
+      }
+    }
+    function FnKeyEvent() {
+      var span = document.getElementById("keySpan");
+      // 키보드 이벤트 발생시 눌려진 키의 keyCode 를 반환
+      var keycode = event.keyCode;
+      span.innerHTML = keycode;
+      /* 특정 키보드가 눌러졌을 때 이벤트 핸들러로 false 를 반환한다.
+      그러면 기본 동작이 차단된다. 
+      즉 키보드가 무력화된다. */
+      if(keycode == 116 || keycode == 8){
+        alert("해당 문서에서는 F5, backspace 키를 사용할 수 없습니다.");
+        return false;
+      }
+    }
+  </script>
+</head>
+<body>
+  <h2>키보드 이벤트</h2>
+  <h3>key 이벤트 테스트</h3>
+  keydown : <input type="text" onkeydown="fnKeyHandler(1)" />
+  <br>
+  keypress : <input type="text" onkeypress="fnKeyHandler(2)" />
+  <br>
+  keyup : <input type="text" onkeyup="fnKeyHandler(3)" />
+  <br>
+  <span id="span" style="font-size: 1.5em;color: red;"></span>
+
+  <h3>keyCode 이용하여 현재키 알아내기</h3>
+  F5와 backspace 는 사용불가합니다
+  <br>
+  <input type="text" onkeydown="return FnKeyEvent();" >
+  <br>
+  <span id="keySpan" style="color: blue; font-size: 1.5em;"></span>
+
+  <h3>특정 조건에서 포커스 이동하기</h3>
+  <script>
+  // 주민번호 입력을 위해 키를 눌렀다가 땠을 때 호출
+  function fnJuminFocus() {
+    // 주민번호 첫번째 항목의 DOM 요소를 얻어온다.
+    var obj1 = document.getElementById("ju1");
+    console.log("입력값", obj1.value);
+    // 현재 입력된 문자열의 길이를 얻어온다.
+    var sthLen = obj1.value.length;
+    if(sthLen == 6) {
+      // 총 6글자가 입력되면 두번째 항목으로 포커스를 이동시킨다.
+      document.getElementById("ju2").focus();
+    }
+  }
+  </script>
+  
+  <h4>주민등록번호 입력하기</h4>
+  <input type="text" id="ju1" size="6"
+    onkeyup="fnJuminFocus();" maxlength="6">
+  <input type="text" id="ju2" size="7" 
+    onkeyup="fnJuminFocusMove('ju2',7,'tel1');">  
+
+    <!-- 연습문제] 앞에서와 마찬가지로 주민번호 뒤 7자리를 입력하면
+     전화번호의 tel1로 이동하고, 
+     tel1에서 3자리가 입력되면 tel2로 이동하는 함수를 생성하시오. -->
+     <h3>휴대전화번호 입력하기</h3>
+     <input type="text" id="tel1" size="3" maxlength="3"
+     onkeyup="commonFocusMove('tel1',3,'tel2');"> -
+     <input type="text" id="tel2" size="4" maxlength="4"
+     onkeyup="commonFocusMove2('tel2',4,'tel3');"> -
+     <input type="text" id="tel3" size="4" maxlength="4">
+     <!-- <h3>휴대전화번호 입력하기</h3>
+     <input type="text" id="tel1" size="3" maxlength="3"
+     onkeyup="commonFocusMove('tel1',3,'tel2');"> -
+     <input type="text" id="tel2" size="4" maxlength="4"
+     onkeyup="commonFocusMove2('tel2',4,'tel3');"> -
+     <input type="text" id="tel3" size="4" maxlength="4"> -->
+
+  <script>
+    // function fnJuminFocusMove() {
+    //   var obj1 = document.getElementById("ju2");
+    //   console.log("입력값", obj1.value);
+    //   var sthLen = obj1.value.length;
+    //   if(sthLen == 7) {
+    //     document.getElementById("tel1").focus();
+    //   }
+    // }
+    // function commonFocusMove() {
+    //   var obj1 = document.getElementById("tel1");
+    //   console.log("입력값", obj1.value);
+    //   var sthLen = obj1.value.length;
+    //   if(sthLen == 3) {
+    //     document.getElementById("tel2").focus();
+    //   }
+    // }
+    // function commonFocusMove2() {
+    //   var obj1 = document.getElementById("tel2");
+    //   console.log("입력값", obj1.value);
+    //   var sthLen = obj1.value.length;
+    //   if(sthLen == 4) {
+    //     document.getElementById("tel3").focus();
+    //   }
+    // }
+  
+    /* thisObj : 현재 입력중인 input 상자
+    txtLength : 입력할 글자수
+    nextObj : 포커스를 이동할 input 상자 */
+    function commonFocusMove(thisObj, txtLength, nextObj){
+      // 현재 입력중인 input 상자의 DOM 을 얻어온다.
+      let input = document.getElementById(nextObj).focus();
+      // 입력된 글자수를 확인한다.
+      let strLen = input.value.length;
+      // 입력된 글자수가 표준 글자수보다 크다면 포커스를 이동시키고
+      // 다음 상자를 얻어오기
+      if(strLen == txtLength) {
+        document.getElementById(nextObj).focus();
+      }
+
+
+    }
+    
+
+  </script>
+    
+
+</body>
+</html>

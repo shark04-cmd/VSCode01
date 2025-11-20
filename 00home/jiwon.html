@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>jiwon</title>
+</head>
+<body>
+    <!--입대날짜 2025 09 01
+      전역날짜 2027 02 28
+      입대 날짜 와 전역 날짜에 오늘날짜를 빼서 
+      복무 기간 , 전역 까지 남은 날짜 계산 후
+      입대 날짜 
+      복무 기간
+      전역 날짜
+      전역까지 남은 날짜
+      오늘 날짜까지 모두 표로 출력하기  -->
+
+    <h2>지원이의 입대날짜 2025 09 01</h2>
+    <h2>지원이의 전역날짜 2027 02 28</h2>
+    <h2>복무 기간(입대날짜부터 전역날짜까지)</h2>
+    <h2>총 복무 일수는?</h2>
+    <script>
+      console.error("date 객체");
+      var date = new Date();
+      console.log("저장된 값 :", date);
+      var y = date.getYear()+1900;
+      var mo = date.getMonth()+1;
+      var d = date.getDate();
+      console.log(`${y} 년 ${mo} 월 ${d}일`);
+      var startDate = new Date (2025, 8, 1);
+      var endDate = new Date (2027, 1, 28);
+      var diff = endDate.getTime() - startDate.getTime();
+      var jiwon = Math.floor(diff / (1000*60*60*24)+1);
+      console.error("총 복무 일수는?");
+      console.log(jiwon + "일")
+      document.write("<span style='font-size:2em;'>"+ jiwon +"일</span>")
+      </script>
+      <h2>현재 날짜는?</h2>
+      <script>
+      console.error("date 객체");
+      var date = new Date();
+      console.log("저장된 값 :", date);
+      var y = date.getYear()+1900;
+      var mo = date.getMonth()+1;
+      var d = date.getDate();
+      console.log(`${y} 년 ${mo} 월 ${d}일`);
+      document.write("<span style='font-size:2em;'>"+ y +"년 " + mo + "월 " + d + "일</span>")
+      </script>
+
+    <h2>복무 기간</h2>
+    <h3>입대한 날짜부터 오늘 날짜까지</h3>
+    <script>
+      console.error("date 객체");
+      var date = new Date();
+      console.log("저장된 값 :", date);
+      var y = date.getYear()+1900;  
+      var mo = date.getMonth()+1;
+      var d = date.getDate();
+      console.log(`${y} 년 ${mo} 월 ${d}일`);
+      var startDate = new Date (2025, 8, 1);
+      var endDate = new Date ();
+      var diff = endDate.getTime() - startDate.getTime();
+      var jiwon = Math.floor(diff / (1000*60*60*24)+1);
+      console.error("전역까지 남은 일수는?"); 
+      console.log(jiwon+ "일")
+      document.write("<span style='font-size:2em;'>"+ jiwon +"일</span>")
+    </script>
+    
+    <h2>전역까지 남은 일수는?</h2>
+    <h3>오늘날짜부터 전역날짜까지</h3>
+    <script>
+      console.error("date 객체");
+      var date = new Date();
+      console.log("저장된 값 :", date);
+      var y = date.getYear()+1900;
+      var mo = date.getMonth()+1;
+      var d = date.getDate();
+      console.log(`${y} 년 ${mo} 월 ${d}일`);
+      var startDate = new Date (2027, 1, 28);
+      var endDate = new Date ();
+      var diff = startDate.getTime() - endDate.getTime();
+      var jiwon = Math.floor(diff / (1000*60*60*24)+1);
+      console.error("전역까지 남은 일수는?");
+      console.log(jiwon+ "일")
+      document.write("<span style='font-size:2em;'>"+ jiwon +"일</span>")
+    </script>
+
+
+
+
+
+
+
+</body>
+</html>
