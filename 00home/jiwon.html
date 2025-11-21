@@ -4,93 +4,140 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>jiwon</title>
+
+  <style>
+    body {
+      font-family: "맑은 고딕", sans-serif;
+      background: #eeffff;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 25px;
+      font-size: 2rem;
+    }
+
+    table {
+      width: 600px;
+      max-width: 100%;
+      margin: 0 auto;
+      border-collapse: collapse;
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+
+    th, td {
+      padding: 18px;
+      border-bottom: 1px solid #ddd;
+      font-size: 1.2rem;
+      word-break: keep-all;
+    }
+
+    th {
+      background: #4b7bd9;
+      color: white;
+      text-align: left;
+      width: 40%;
+    }
+
+    td {
+      text-align: right;
+      font-weight: bold;
+      color: #333;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 1.6rem;
+      }
+      th, td {
+        padding: 14px;
+        font-size: 1rem;
+      }
+      table {
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 375px) {
+      h1 {
+        font-size: 1.4rem;
+      }
+      th, td {
+        padding: 12px;
+        font-size: 0.95rem;
+      }
+    }
+  </style>
 </head>
 <body>
-    <!--입대날짜 2025 09 01
-      전역날짜 2027 02 28
-      입대 날짜 와 전역 날짜에 오늘날짜를 빼서 
-      복무 기간 , 전역 까지 남은 날짜 계산 후
-      입대 날짜 
-      복무 기간
-      전역 날짜
-      전역까지 남은 날짜
-      오늘 날짜까지 모두 표로 출력하기  -->
 
-    <h2>지원이의 입대날짜 2025 09 01</h2>
-    <h2>지원이의 전역날짜 2027 02 28</h2>
-    <h2>복무 기간(입대날짜부터 전역날짜까지)</h2>
-    <h2>총 복무 일수는?</h2>
-    <script>
-      console.error("date 객체");
-      var date = new Date();
-      console.log("저장된 값 :", date);
-      var y = date.getYear()+1900;
-      var mo = date.getMonth()+1;
-      var d = date.getDate();
-      console.log(`${y} 년 ${mo} 월 ${d}일`);
-      var startDate = new Date (2025, 8, 1);
-      var endDate = new Date (2027, 1, 28);
-      var diff = endDate.getTime() - startDate.getTime();
-      var jiwon = Math.floor(diff / (1000*60*60*24)+1);
-      console.error("총 복무 일수는?");
-      console.log(jiwon + "일")
-      document.write("<span style='font-size:2em;'>"+ jiwon +"일</span>")
-      </script>
-      <h2>현재 날짜는?</h2>
-      <script>
-      console.error("date 객체");
-      var date = new Date();
-      console.log("저장된 값 :", date);
-      var y = date.getYear()+1900;
-      var mo = date.getMonth()+1;
-      var d = date.getDate();
-      console.log(`${y} 년 ${mo} 월 ${d}일`);
-      document.write("<span style='font-size:2em;'>"+ y +"년 " + mo + "월 " + d + "일</span>")
-      </script>
+  <h1>지원이 군복무 현황</h1>
 
-    <h2>복무 기간</h2>
-    <h3>입대한 날짜부터 오늘 날짜까지</h3>
-    <script>
-      console.error("date 객체");
-      var date = new Date();
-      console.log("저장된 값 :", date);
-      var y = date.getYear()+1900;  
-      var mo = date.getMonth()+1;
-      var d = date.getDate();
-      console.log(`${y} 년 ${mo} 월 ${d}일`);
-      var startDate = new Date (2025, 8, 1);
-      var endDate = new Date ();
-      var diff = endDate.getTime() - startDate.getTime();
-      var jiwon = Math.floor(diff / (1000*60*60*24)+1);
-      console.error("전역까지 남은 일수는?"); 
-      console.log(jiwon+ "일")
-      document.write("<span style='font-size:2em;'>"+ jiwon +"일</span>")
-    </script>
-    
-    <h2>전역까지 남은 일수는?</h2>
-    <h3>오늘날짜부터 전역날짜까지</h3>
-    <script>
-      console.error("date 객체");
-      var date = new Date();
-      console.log("저장된 값 :", date);
-      var y = date.getYear()+1900;
-      var mo = date.getMonth()+1;
-      var d = date.getDate();
-      console.log(`${y} 년 ${mo} 월 ${d}일`);
-      var startDate = new Date (2027, 1, 28);
-      var endDate = new Date ();
-      var diff = startDate.getTime() - endDate.getTime();
-      var jiwon = Math.floor(diff / (1000*60*60*24)+1);
-      console.error("전역까지 남은 일수는?");
-      console.log(jiwon+ "일")
-      document.write("<span style='font-size:2em;'>"+ jiwon +"일</span>")
-    </script>
+  <table>
+    <tr>
+      <th>입대 날짜</th>
+      <td id="startDateText"></td>
+    </tr>
+    <tr>
+      <th>전역 날짜</th>
+      <td id="endDateText"></td>
+    </tr>
+    <tr>
+      <th>총 복무 일수</th>
+      <td id="totalService"></td>
+    </tr>
+    <tr>
+      <th>오늘 날짜</th>
+      <td id="todayText"></td>
+    </tr>
+    <tr>
+      <th>복무한 일수 <br>(입대 → 오늘)</th>
+      <td id="serviceProgress"></td>
+    </tr>
+    <tr>
+      <th>전역까지 남은 일수 <br>(오늘 → 전역)</th>
+      <td id="remainDays"></td>
+    </tr>
+  </table>
 
+  <script>
+    var date = new Date();
+    var y = date.getYear() + 1900;
+    var mo = date.getMonth() + 1;
+    var d = date.getDate();
 
+    var startDate = new Date(2025, 8, 1);
+    var endDate = new Date(2027, 1, 28);
 
+    var diffTotal = endDate.getTime() - startDate.getTime();
+    var totalServiceDays = Math.floor(diffTotal / (1000 * 60 * 60 * 24) + 1);
 
+    var today = new Date();
+    var todayY = today.getFullYear();
+    var todayM = today.getMonth() + 1;
+    var todayD = today.getDate();
 
+    var diffProgress = today.getTime() - startDate.getTime();
+    var progressedDays = Math.floor(diffProgress / (1000 * 60 * 60 * 24) + 1);
 
+    var diffRemain = endDate.getTime() - today.getTime();
+    var remain = Math.floor(diffRemain / (1000 * 60 * 60 * 24) + 1);
+
+    document.getElementById("startDateText").innerText = "2025년 9월 1일";
+    document.getElementById("endDateText").innerText = "2027년 2월 28일";
+    document.getElementById("totalService").innerText = totalServiceDays + "일";
+    document.getElementById("todayText").innerText = `${todayY}년 ${todayM}월 ${todayD}일`;
+    document.getElementById("serviceProgress").innerText = progressedDays + "일";
+    document.getElementById("remainDays").innerText = remain + "일ㅋㅋㅋㅋㅋㅋㅋㅋ";
+  </script>
 
 </body>
 </html>
