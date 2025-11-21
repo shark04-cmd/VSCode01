@@ -8,26 +8,42 @@
 <body>
   <h2>클래스와 상속</h2>
   <script>
+    // 부모클래스
     class Computer {
-      cpmstructor(b) {
-        this.b = b;
+      // 생성자 : 클래스명과 동일하게 정의하지 않는다.
+      constructor(b) {
+        // 멤버변수 선언 및 초기화
+        this.brand = b;
       }
-      compterInfo() {
+      // 멤버함수 : 화살표 함수로 정의
+      computerInfo = () => {
+        // 클래스 함수에서는 this 를 사용할 수 있다.
         return '제조사 : '+ this.brand;
       }
     }
     class Notebook extends Computer {
+      // 부모클래스의 멤버변수까지 초기화해야 하므로 2개의 값을 받음
       constructor(b, n) {
+        // 부모클래스의 생성자 호출
         super(b);
         this.name = n;
       }
+      // 멤버변수의 일반함수로 정의
       notebookInfo() {
-        return '모델 : '+ this.model;
+        return this.computerInfo() + ', 노트북이름 : '+this.name;
       }
     }
+    console.error("부모클래스로 객체 생성");
+    // 생성자를 통해 객체 생성
+    computer = new Computer("삼성");
+    console.log(computer.computerInfo());
 
+    console.error("자식클래스로 객체 생성");
+    notebook = new Notebook("apple", "MacBook");
+    console.log(notebook.notebookInfo());
 
-
+    console.log("멤버변수(부모) : "+ notebook.brand);
+    console.log("멤버변수(자식) : "+ notebook.name);
   </script>
 </body>
 </html>
