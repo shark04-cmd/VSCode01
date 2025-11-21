@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>J21MakeObject01.html</title>
+</head>
+<body>
+  <h2>Object 객체</h2>
+  <script>
+    /* 객체선언1 : JS 의 내장 객체인 Object 를 이용한다.
+    멤버 함수는 일반적인 함수를 선언한 후 객체의 
+    참조변수를 통해 등록하는 방식을 사용한다. */
+    console.error("방법1")
+    // 새로운 객체 생성
+    let person = new Object();
+    // 멤버변수 생성 및 초기화
+    person.name = "홍길동";
+    person.age = 10;
+    // 멤버함수 생성
+    function myInfo() {
+      // 멤버변수 접근시 this 사용
+      return `이름 : ${this.name}, 나이 : ${this.age}`  
+    }
+    // 멤버함수 등록. 이때 소괄호는 생략한다.
+    person.info = myInfo;
+    // 멤버함수 호출 및 결과확인
+    console.log(person.info());
+    </script>
+    <script> 
+    /* 객체선언 2 : 생성자를 이용해서 선언한다.
+    선언시 멤버변수와 멤버함수에는 반드시 this 를 추가해야한다. */
+    console.error("방법2")
+    let Account = function(owner, balance) {
+      this.owner = owner;
+      this.balance = balance;
+      
+      this.accInfo = function() {
+        console.log(`예금주 : ${this.owner}, 잔액 : ${this.balance}`);
+      }
+    }
+    var account = new Account("손오공", 25000);
+    account.accInfo();
+   </script>
+   <script>
+    console.error("방법3")
+    const car = {
+      price : 50000,
+      carInfo1 : function(){
+        return `자동차명 : ${this.name}`;
+      },
+      carInfo2 : () => {
+        return `가격 : ${this.price}`;
+      }
+    }
+    console.log(car.carInfo1());
+    console.log(car.carInfo2());
+  </script>
+</body>
+</html>

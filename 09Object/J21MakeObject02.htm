@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>J21MakeObject02.htm</title>
+</head>
+<body>
+  <h2>클래스와 상속</h2>
+  <script>
+    class Computer {
+      cpmstructor(b) {
+        this.b = b;
+      }
+      compterInfo() {
+        return '제조사 : '+ this.brand;
+      }
+    }
+    class Notebook extends Computer {
+      constructor(b, n) {
+        super(b);
+        this.name = n;
+      }
+      notebookInfo() {
+        return '모델 : '+ this.model;
+      }
+    }
+
+
+
+  </script>
+</body>
+</html>

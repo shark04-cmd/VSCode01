@@ -7,17 +7,15 @@
 
   <style>
     body {
-      font-family: "맑은 고딕", sans-serif;
+      font-family: "나눔 고딕", sans-serif;
       background: #eeffff;
       padding: 20px;
     }
-
     h1 {
       text-align: center;
       margin-bottom: 25px;
       font-size: 2rem;
     }       
-
     table {
       width: 600px;
       max-width: 100%;
@@ -28,31 +26,26 @@
       overflow: hidden;
       box-shadow: 0 0 15px rgba(0,0,0,0.1);
     }
-
     th, td {
       padding: 18px;
       border-bottom: 1px solid #ddd;
       font-size: 1.2rem;
       word-break: keep-all;
     }
-
     th {
       background: #406bc2;
       color: white;
       text-align: left;
       width: 40%;
     }
-
     td {
       text-align: right;
       font-weight: bold;
       color: #333;
     }
-
     tr:last-child td {
       border-bottom: none;
     }
-
     @media (max-width: 600px) {
       h1 {
         font-size: 1.6rem;
@@ -65,7 +58,6 @@
         width: 100%;
       }
     }
-
     @media (max-width: 375px) {
       h1 {
         font-size: 1.4rem;
@@ -78,7 +70,6 @@
   </style>
 </head>
 <body>
-
   <h1>지원이 군복무 현황</h1>
 
   <table>
@@ -107,7 +98,6 @@
       <td id="remainDays"></td>
     </tr>
   </table>
-
   <script>
     var date = new Date();
     var y = date.getYear() + 1900;
@@ -136,7 +126,7 @@
     document.getElementById("totalService").innerText = totalServiceDays + "일";
     document.getElementById("todayText").innerText = `${todayY}년 ${todayM}월 ${todayD}일`;
     document.getElementById("serviceProgress").innerText = progressedDays + "일";
-    document.getElementById("remainDays").innerText = remain + "일ㅋㅋㅋㅋㅋㅋㅋㅋ";
+    document.getElementById("remainDays").innerText = remain + "일";
   </script>
 
 </body>
