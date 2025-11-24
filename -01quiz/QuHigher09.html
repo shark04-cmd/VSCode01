@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QuHigher09.html</title>
+</head>
+<body>
+   
+<!-- 문제09] reduce() 함수를 사용하여 
+ 모든 상품의 가격 합계를 구하는 프로그램을 작성하시오.  -->
+
+  <script>
+    const products = [
+      { name: 'apple', price: 1000 },
+      { name: 'banana', price: 800 },
+      { name: 'notebook', price: 20000 }
+    ];
+
+    const total = products.reduce((acc, product) => acc + product.price, 0);
+    console.log(total);
+
+    
+
+
+  </script>
+ 
+</body>
+</html>

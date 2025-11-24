@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>J22Cookie1.html</title>
+  <script>
+    var setCookie = function (name, value, exp){
+      var date = new Date();
+      date.setTime(date.getTime() + exp * 24 * 60 * 60 * 1000);
+      document.cookie = name + '=' + value + ';expires=' + date.toUTCString() + ';path=/';
+    };
+    var getCookie = function (name){
+      var values = document.cookie.split(';');
+      for(var i = 0; i < values.length; i++){
+        var unit = values[i].trim();
+        var value = unit.split('=');
+        if(value[0] == name){
+          return unescape(value[1]);
+        }
+      }
+      return null;
+    };
+    function makeCookie(){
+      var cName = document.getElementById("cName").value;
+      var cValue = document.getElementById("cValue").value;
+      
+      setCookie(cName, cValue);
+      alert('쿠키가 생성되었습니다.')
+      location.reload();
+    }
+
+    function readCookie(){
+      var cName = document.getElementById("cName").value;
+     
+      var readValue = getCookie(cName);
+      if(readValue == null){
+        alert('해당 이름의 쿠키가 없습니다.')
+      }
+      else{
+        alert("쿠키값:"+readValue);
+      }
+    }
+    function deleteCookie(){
+      var cName = document.getElementById("cName").value;
+      
+      setCookie(cName, cValue, -1);
+      alert('쿠키가 삭제되었습니다.');
+      location.reload();
+    }
+  </script>
+</head>
+<body>
+  <h2>쿠키 생성하기</h2>
+  <form>
+    쿠키명 : <input type="text" id="cName" value="popup1"/>
+    <br>
+    쿠키에 저장할 값 : <input type="text" id="cValue" value="파업창 열기"/>
+    <br>
+    <button type="button" onclick="makeCookie();">쿠키 생성하기</button>
+    <button type="button" onclick="readCookie();">쿠키 출력하기</button>
+    <button type="button" onclick="deleteCookie();">쿠키 삭제하기</button>
+  </form>
+</body>
+</html>

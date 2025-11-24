@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QuHigher10.html</title>
+</head>
+<body>
+
+  <!-- 문제10]  reduce() 함수를 사용하여  
+   배열에서 가장 큰 숫자를 찾아서 
+   반환하는 프로그램을 작성하시오.  -->
+
+  <script>
+    const numbers = [3, 7, 2, 9, 5];
+
+    const max = numbers.reduce((acc, num) => Math.max(acc, num), numbers[0]);
+    console.log(max);
+    
+
+  </script>
+
+</body>
+</html>
