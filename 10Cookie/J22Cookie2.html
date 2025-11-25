@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>J22Cookie2.html</title>
+  <script>
+    var setCookie = function (name, value, exp){
+      var date = new Date();
+      console.log("1907-01-01 00:00:00 부터 지금까지의 초(타입스탬프)",
+        date.getTime());
+      date.setTime(date.getTime() + exp * 24 * 60 * 60 * 1000);
+      console.log("유효시간", date.toUTCString());
+      document.cookie = name + '=' + value + ';expires=' + date.toUTCString() + ';path=/';
+    };
+    var getCookie = function (name){
+      var values = document.cookie.split(';');
+      for(var i = 0; i < values.length; i++){
+        var unit = values[i].trim();
+        var value = unit.split('=');
+        if(value[0] == name){
+          return unescape(value[1]);
+        }
+      }
+      return null;
+    };
+    function makeCookie(){
+      var cName = document.getElementById("cName").value;
+      var cValue = document.getElementById("cValue").value;
+      setCookie(cName, cValue);
+      alert('쿠키가 생성되었습니다.')
+    }
+    function readCookie(){
+      var cName = document.getElementById("cName").value;
+      var readValue = getCookie(cName);
+      if(readValue == null){
+        alert('해당 이름의 쿠키가 없습니다.')
+      }
+      else{
+        alert("쿠키값:"+readValue);
+      }
+    }
+    function deleteCookie(){
+      var cName = document.getElementById("cName").value;
+      setCookie(cName, cValue, -1);
+      alert('쿠키가 삭제되었습니다.');
+    }
+  </script>
+  <style>
+    .popupWin{
+        width: 200px;height: 250px;background-color: blueviolet;
+        color: greenyellow;font-size: 1em;text-align: center;
+        line-height: 150px;position: absolute;top: 70px;left: 50px;
+    }
+  </style>
+  <!--연습문제] body영역에는 <div>태그로 만든 레이어 팝업창이 존재한다. 
+      체크박스를 클릭하면 창이 닫히면서 유효기간이 하루인 쿠키를 생성하자. 
+      쿠키가 만들어지면 웹브라우저를 새로고침해도 팝업창이 뜨지 않아야한다. 
+      개발자모드에서 쿠키를 지우면 팝업창은 다시 뜨게된다.  
+--> 
+</head>
+<body>
+  <!-- 오늘 하루 열지 않음을 누를시 
+  display:none 으로 바꿔 팝엽창이 닫히게 한다.
+  set/ get 을 이용하여 쿠키의 유효기간을 하루로 설정해서 새로고침을 해도 팝업창이 안뜨게 하고
+  개발자 모드에서(F12) 쿠키를 지우면 팝업창은 다시 뜨게한다  -->
+    <h2>쿠키로 팝업창 제어하기</h2>
+    <!-- display 를 block 으로 설정하면
+     문서 로드되었을 때 보임처리 되었다가
+     쿠키를 통해 숨김처리 되므로 깜빡이는 현상이 생긴다.
+     따라서 처음부터 none 으로 설정하는게 좋다. -->
+    <div class="popupWin" id="popupWin" style="display : none;">
+      오늘의 팝업창
+    <br>
+    <input type="checkbox" id="popChk" 
+      onclick="closeWin();"> 오늘하루열지않음
+    </div>
+
+    <script>
+      // 체크박스를 클릭했을 때 호출되는 함수
+      const closeWin = () => {
+        // 유효기간이 1일인 쿠키 생성.
+        // 쿠키명과 같은 문자열로 전달
+        setCookie("popup", "off", 1);
+        // 레이어 팝업창은 즉시 숨김처리.
+        document.getElementById("popupWin").style.display = "none";
+        // display 속성을 none 으로 설정하면 화면에서 숨김처리된다.
+      };
+      // 문서의 로드가 완료되면 쿠키를 읽어서 레이어 팝업창으로 처리한다.
+      window.onload = function(){}
+        // 팝업창 제어를 위한 쿠키를 읽어서 변수에 저장
+        let popupWinCookie = getCookie("popup");
+        // div 로 만든 팝업창의 DOM 요소를 얻어옴
+        let popupWin = document.getElementById("popupWin");
+        // 쿠키값이 off 라면 팝업창을 숨김처리한다.
+        if(popupWinCookie == 'off')
+          popupWin.style.display = "none";
+        else
+          popupWin.style.display = "block";
+        
+        
+    </script>
+
+
+    <!-- <script>
+      function closeWin(){
+        if(document.getElementById("popChk").checked){
+          document.getElementById("popupWin").style.display = "none";
+        }
+        else{
+          document.getElementById("popupWin").style.display = "block";
+        }
+      }
+    </script> -->
+</body>
+</html>

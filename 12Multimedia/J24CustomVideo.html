@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <h2>Jabascript 를 이용한 커스텀 비디오 만들기</h2>
+  <div>
+    <video id="vidio" width="300" height="200"
+    src="../media/video.mp4" muted autoplay controls poster="../images/html5.png"></video>
+  </div>
+  <div>
+    <progress value="0" id="progress" style="width: 300px;"></progress>
+  </div>
+  <div>
+    <span id="currenttime"></span> / <span id="totaltime"></span>
+  </div>
+  <input type="button" value="재생하기" onclick="play();">
+  <input type="button" value="일시정지" onclick="stop()">
+  <input type="button" value="처음부터 재생하기" onclick="start()">
+  <input type="button" value="볼륨 +" onclick="setVolumn(1)">
+  <input type="button" value="볼륨 -" onclick="setVolumn(-1)">
+  <input type="button" value="음소거" onclick="setVolumn(0)">
+  <input type="button" value="재생속도 +" onclick="setPlaybackRate(1)">
+  <input type="button" value="재생속도 -" onclick="setPlaybackRate(-1)">
+  <input type="button" value="10초 앞으로" onclick="setTime(1)">
+  <input type="button" value="10초 뒤로" onclick="setTime(-1)">
+
+
+
+
+</body>
+</html>
